@@ -1,1485 +1,2664 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kathiravan H — iOS Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<style>
-/* ============================================================
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kathiravan H — iOS Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ============================================================
    CSS VARIABLES & RESET
 ============================================================ */
-:root {
-  --bg: #000000;
-  --bg2: #0a0a0f;
-  --surface: rgba(255,255,255,0.05);
-  --surface-hover: rgba(255,255,255,0.1);
-  --border: rgba(255,255,255,0.12);
-  --border-bright: rgba(255,255,255,0.25);
-  --text: #f5f5f7;
-  --text-secondary: rgba(245,245,247,0.6);
-  --text-tertiary: rgba(245,245,247,0.35);
-  --accent: #0A84FF;
-  --accent2: #BF5AF2;
-  --accent3: #32D74B;
-  --accent-glow: rgba(10,132,255,0.35);
-  --accent2-glow: rgba(191,90,242,0.35);
-  --grad1: linear-gradient(135deg, #0A84FF 0%, #BF5AF2 100%);
-  --grad2: linear-gradient(135deg, #32D74B 0%, #0A84FF 100%);
-  --card-blur: blur(24px);
-  --transition: 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-[data-theme="light"] {
-  --bg: #f5f5f7;
-  --bg2: #ffffff;
-  --surface: rgba(255,255,255,0.65);
-  --surface-hover: rgba(255,255,255,0.85);
-  --border: rgba(0,0,0,0.08);
-  --border-bright: rgba(0,0,0,0.18);
-  --text: #1d1d1f;
-  --text-secondary: rgba(29,29,31,0.6);
-  --text-tertiary: rgba(29,29,31,0.35);
-  --accent: #0071E3;
-  --accent2: #9B59E8;
-  --accent3: #28CD41;
-  --accent-glow: rgba(0,113,227,0.2);
-  --accent2-glow: rgba(155,89,232,0.2);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  line-height:1.6;
-  transition:background var(--transition),color var(--transition);
-}
-::selection{background:var(--accent);color:#fff;}
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;display:block;}
+    :root {
+      --bg: #000000;
+      --bg2: #0a0a0f;
+      --surface: rgba(255, 255, 255, 0.05);
+      --surface-hover: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-bright: rgba(255, 255, 255, 0.25);
+      --text: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --text-tertiary: rgba(245, 245, 247, 0.35);
+      --accent: #0A84FF;
+      --accent2: #BF5AF2;
+      --accent3: #32D74B;
+      --accent-glow: rgba(10, 132, 255, 0.35);
+      --accent2-glow: rgba(191, 90, 242, 0.35);
+      --grad1: linear-gradient(135deg, #0A84FF 0%, #BF5AF2 100%);
+      --grad2: linear-gradient(135deg, #32D74B 0%, #0A84FF 100%);
+      --card-blur: blur(24px);
+      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-/* ============================================================
+    [data-theme="light"] {
+      --bg: #f5f5f7;
+      --bg2: #ffffff;
+      --surface: rgba(255, 255, 255, 0.65);
+      --surface-hover: rgba(255, 255, 255, 0.85);
+      --border: rgba(0, 0, 0, 0.08);
+      --border-bright: rgba(0, 0, 0, 0.18);
+      --text: #1d1d1f;
+      --text-secondary: rgba(29, 29, 31, 0.6);
+      --text-tertiary: rgba(29, 29, 31, 0.35);
+      --accent: #0071E3;
+      --accent2: #9B59E8;
+      --accent3: #28CD41;
+      --accent-glow: rgba(0, 113, 227, 0.2);
+      --accent2-glow: rgba(155, 89, 232, 0.2);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ============================================================
    LOADER
 ============================================================ */
-#loader{
-  position:fixed;inset:0;z-index:9999;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--bg);
-  flex-direction:column;gap:20px;
-  transition:opacity 0.6s ease, visibility 0.6s ease;
-}
-#loader.hidden{opacity:0;visibility:hidden;}
-.loader-logo{
-  font-size:48px;font-weight:800;letter-spacing:-2px;
-  background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:pulse-logo 1.5s ease-in-out infinite;
-}
-.loader-bar{
-  width:120px;height:2px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;
-}
-.loader-bar-fill{
-  height:100%;width:0%;background:var(--grad1);border-radius:2px;
-  animation:load-bar 1.8s ease forwards;
-}
-@keyframes load-bar{to{width:100%;}}
-@keyframes pulse-logo{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.7;transform:scale(0.97);}}
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      flex-direction: column;
+      gap: 20px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
 
-/* ============================================================
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse-logo 1.5s ease-in-out infinite;
+    }
+
+    .loader-bar {
+      width: 120px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--grad1);
+      border-radius: 2px;
+      animation: load-bar 1.8s ease forwards;
+    }
+
+    @keyframes load-bar {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes pulse-logo {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(0.97);
+      }
+    }
+
+    /* ============================================================
    CURSOR GLOW
 ============================================================ */
-.cursor-glow{
-  position:fixed;width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(10,132,255,0.12) 0%,transparent 70%);
-  pointer-events:none;z-index:1;transform:translate(-50%,-50%);
-  transition:left 0.12s ease,top 0.12s ease;
-}
+    .cursor-glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10, 132, 255, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      transition: left 0.12s ease, top 0.12s ease;
+    }
 
-/* ============================================================
+    /* ============================================================
    NAV
 ============================================================ */
-nav{
-  position:fixed;top:20px;left:50%;transform:translateX(-50%);
-  z-index:1000;width:min(92%,780px);
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(28px) saturate(1.8);
-  -webkit-backdrop-filter:blur(28px) saturate(1.8);
-  border:1px solid var(--border-bright);
-  border-radius:22px;padding:12px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:background var(--transition),border var(--transition);
-}
-[data-theme="light"] nav{background:rgba(255,255,255,0.72);}
-.nav-logo{
-  font-size:17px;font-weight:700;letter-spacing:-0.5px;
-  background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.nav-links{display:flex;align-items:center;gap:6px;}
-.nav-links a{
-  font-size:13px;font-weight:500;color:var(--text-secondary);
-  padding:6px 14px;border-radius:12px;transition:all 0.25s ease;
-}
-.nav-links a:hover{color:var(--text);background:var(--surface-hover);}
-.nav-right{display:flex;align-items:center;gap:10px;}
-.theme-btn{
-  width:38px;height:38px;border-radius:12px;border:1px solid var(--border);
-  background:var(--surface);backdrop-filter:blur(10px);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:17px;transition:all 0.25s ease;
-}
-.theme-btn:hover{background:var(--surface-hover);border-color:var(--border-bright);}
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: min(92%, 780px);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(28px) saturate(1.8);
+      -webkit-backdrop-filter: blur(28px) saturate(1.8);
+      border: 1px solid var(--border-bright);
+      border-radius: 22px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), border var(--transition);
+    }
 
-/* ============================================================
+    [data-theme="light"] nav {
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      transition: all 0.25s ease;
+    }
+
+    .theme-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-bright);
+    }
+
+    /* ============================================================
    HERO
 ============================================================ */
-.hero{
-  min-height:100vh;position:relative;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;padding:0 24px;
-}
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(10,132,255,0.25) 0%,transparent 60%),
-             radial-gradient(ellipse 60% 50% at 80% 80%,rgba(191,90,242,0.2) 0%,transparent 60%),
-             radial-gradient(ellipse 50% 40% at 10% 70%,rgba(50,215,75,0.1) 0%,transparent 60%);
-}
-[data-theme="light"] .hero-bg{
-  background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(0,113,227,0.15) 0%,transparent 60%),
-             radial-gradient(ellipse 60% 50% at 80% 80%,rgba(155,89,232,0.1) 0%,transparent 60%);
-}
-.hero-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;
-  align-items:center;max-width:1200px;width:100%;position:relative;z-index:2;
-  padding-top:80px;
-}
-.hero-text{}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  color:var(--accent);margin-bottom:24px;
-  background:rgba(10,132,255,0.12);border:1px solid rgba(10,132,255,0.3);
-  padding:6px 16px;border-radius:20px;
-}
-.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.5s ease infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.hero-title{
-  font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-2.5px;line-height:1.05;
-  margin-bottom:22px;
-}
-.hero-title .line{display:block;}
-.hero-title .gradient-text{
-  background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-subtitle{
-  font-size:18px;font-weight:400;color:var(--text-secondary);
-  max-width:480px;line-height:1.7;margin-bottom:40px;
-}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
-.btn-primary{
-  padding:14px 28px;border-radius:14px;font-size:15px;font-weight:600;
-  background:var(--grad1);color:#fff;border:none;cursor:pointer;
-  box-shadow:0 8px 32px var(--accent-glow);
-  transition:all 0.3s ease;position:relative;overflow:hidden;
-}
-.btn-primary::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.25),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow);}
-.btn-primary:hover::after{opacity:1;}
-.btn-secondary{
-  padding:14px 28px;border-radius:14px;font-size:15px;font-weight:600;
-  background:var(--surface);border:1px solid var(--border-bright);
-  color:var(--text);cursor:pointer;
-  backdrop-filter:blur(16px);transition:all 0.3s ease;
-}
-.btn-secondary:hover{background:var(--surface-hover);transform:translateY(-2px);}
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 24px;
+    }
 
-/* iPhone mockup group */
-.hero-phones{
-  position:relative;height:580px;
-  display:flex;align-items:center;justify-content:center;
-}
-.iphone{
-  position:absolute;
-  width:220px;
-  background:linear-gradient(160deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04));
-  border:1px solid rgba(255,255,255,0.2);
-  border-radius:44px;
-  backdrop-filter:blur(20px);
-  box-shadow:0 40px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.2);
-  overflow:hidden;
-  animation:float-phone 6s ease-in-out infinite;
-}
-.iphone::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:90px;height:28px;background:rgba(0,0,0,0.9);
-  border-radius:0 0 20px 20px;z-index:3;
-}
-.iphone-screen{
-  padding:40px 18px 20px;height:440px;
-  display:flex;flex-direction:column;
-  background:linear-gradient(180deg,#0d0d1a 0%,#0a0a15 100%);
-}
-[data-theme="light"] .iphone-screen{background:linear-gradient(180deg,#e8f0ff 0%,#dceeff 100%);}
-.iphone.phone-left{
-  left:0;top:60px;transform:rotate(-8deg) scale(0.88);
-  animation-delay:-2s;z-index:1;
-}
-.iphone.phone-center{
-  left:50%;transform:translateX(-50%);z-index:3;
-  width:240px;
-}
-.iphone.phone-right{
-  right:0;top:60px;transform:rotate(8deg) scale(0.88);
-  animation-delay:-4s;z-index:1;
-}
-@keyframes float-phone{
-  0%,100%{transform:translateY(0) rotate(0);}
-  33%{transform:translateY(-16px) rotate(0);}
-  66%{transform:translateY(-8px) rotate(0);}
-}
-.iphone.phone-left{animation-name:float-phone-left;}
-.iphone.phone-right{animation-name:float-phone-right;}
-@keyframes float-phone-left{
-  0%,100%{transform:rotate(-8deg) scale(0.88) translateY(0);}
-  50%{transform:rotate(-8deg) scale(0.88) translateY(-18px);}
-}
-@keyframes float-phone-right{
-  0%,100%{transform:rotate(8deg) scale(0.88) translateY(0);}
-  50%{transform:rotate(8deg) scale(0.88) translateY(-12px);}
-}
-@keyframes float-phone-center{
-  0%,100%{transform:translateX(-50%) translateY(0);}
-  50%{transform:translateX(-50%) translateY(-20px);}
-}
-.iphone.phone-center{animation-name:float-phone-center;}
-/* Phone screen content */
-.phone-app-icon{
-  width:54px;height:54px;border-radius:16px;
-  margin:0 auto 12px;display:flex;align-items:center;justify-content:center;
-  font-size:26px;box-shadow:0 8px 20px rgba(0,0,0,0.3);
-}
-.phone-app-title{font-size:11px;font-weight:700;text-align:center;color:rgba(255,255,255,0.9);margin-bottom:4px;}
-.phone-app-sub{font-size:9px;text-align:center;color:rgba(255,255,255,0.5);}
-.phone-bars{margin-top:16px;display:flex;flex-direction:column;gap:6px;}
-.phone-bar{height:6px;border-radius:3px;background:rgba(255,255,255,0.08);}
-.phone-bar.accent{background:linear-gradient(90deg,var(--accent),var(--accent2));width:70%;}
-.phone-bar.accent2{background:linear-gradient(90deg,var(--accent2),var(--accent3));width:50%;}
-.phone-bar.accent3{background:linear-gradient(90deg,var(--accent3),var(--accent));width:85%;}
-/* Hero stats */
-.hero-stats{
-  display:flex;gap:32px;margin-top:40px;
-}
-.stat{text-align:left;}
-.stat-num{font-size:28px;font-weight:800;letter-spacing:-1px;background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.stat-label{font-size:12px;color:var(--text-tertiary);font-weight:500;}
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(10, 132, 255, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(191, 90, 242, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 70%, rgba(50, 215, 75, 0.1) 0%, transparent 60%);
+    }
 
-/* ============================================================
+    [data-theme="light"] .hero-bg {
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 113, 227, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(155, 89, 232, 0.1) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      padding-top: 80px;
+    }
+
+    .hero-text {}
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      background: rgba(10, 132, 255, 0.12);
+      border: 1px solid rgba(10, 132, 255, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 1.5s ease infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -2.5px;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero-title .line {
+      display: block;
+    }
+
+    .hero-title .gradient-text {
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      background: var(--grad1);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 32px var(--accent-glow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px var(--accent-glow);
+    }
+
+    .btn-primary:hover::after {
+      opacity: 1;
+    }
+
+    .btn-secondary {
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      color: var(--text);
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+    }
+
+    /* iPhone mockup group */
+    .hero-phones {
+      position: relative;
+      height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .iphone {
+      position: absolute;
+      width: 220px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 44px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      animation: float-phone 6s ease-in-out infinite;
+    }
+
+    .iphone::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 0 0 20px 20px;
+      z-index: 3;
+    }
+
+    .iphone-screen {
+      padding: 40px 18px 20px;
+      height: 440px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #0d0d1a 0%, #0a0a15 100%);
+    }
+
+    [data-theme="light"] .iphone-screen {
+      background: linear-gradient(180deg, #e8f0ff 0%, #dceeff 100%);
+    }
+
+    .iphone.phone-left {
+      left: 0;
+      top: 60px;
+      transform: rotate(-8deg) scale(0.88);
+      animation-delay: -2s;
+      z-index: 1;
+    }
+
+    .iphone.phone-center {
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      width: 240px;
+    }
+
+    .iphone.phone-right {
+      right: 0;
+      top: 60px;
+      transform: rotate(8deg) scale(0.88);
+      animation-delay: -4s;
+      z-index: 1;
+    }
+
+    @keyframes float-phone {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      33% {
+        transform: translateY(-16px) rotate(0);
+      }
+
+      66% {
+        transform: translateY(-8px) rotate(0);
+      }
+    }
+
+    .iphone.phone-left {
+      animation-name: float-phone-left;
+    }
+
+    .iphone.phone-right {
+      animation-name: float-phone-right;
+    }
+
+    @keyframes float-phone-left {
+
+      0%,
+      100% {
+        transform: rotate(-8deg) scale(0.88) translateY(0);
+      }
+
+      50% {
+        transform: rotate(-8deg) scale(0.88) translateY(-18px);
+      }
+    }
+
+    @keyframes float-phone-right {
+
+      0%,
+      100% {
+        transform: rotate(8deg) scale(0.88) translateY(0);
+      }
+
+      50% {
+        transform: rotate(8deg) scale(0.88) translateY(-12px);
+      }
+    }
+
+    @keyframes float-phone-center {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-20px);
+      }
+    }
+
+    .iphone.phone-center {
+      animation-name: float-phone-center;
+    }
+
+    /* Phone screen content */
+    .phone-app-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .phone-app-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 4px;
+    }
+
+    .phone-app-sub {
+      font-size: 9px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .phone-bars {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .phone-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .phone-bar.accent {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 70%;
+    }
+
+    .phone-bar.accent2 {
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      width: 50%;
+    }
+
+    .phone-bar.accent3 {
+      background: linear-gradient(90deg, var(--accent3), var(--accent));
+      width: 85%;
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    /* ============================================================
    SECTION COMMONS
 ============================================================ */
-section{padding:120px 24px;max-width:1200px;margin:0 auto;}
-.section-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  color:var(--accent2);margin-bottom:18px;
-}
-.section-title{
-  font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-2px;
-  line-height:1.08;margin-bottom:16px;
-}
-.section-subtitle{
-  font-size:17px;color:var(--text-secondary);max-width:560px;line-height:1.7;
-  margin-bottom:64px;
-}
+    section {
+      padding: 150px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* ============================================================
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 64px;
+    }
+
+    /* ============================================================
    GLASS CARD
 ============================================================ */
-.glass-card{
-  background:var(--surface);
-  backdrop-filter:var(--card-blur);
-  -webkit-backdrop-filter:var(--card-blur);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:32px;
-  position:relative;
-  overflow:hidden;
-  transition:all var(--transition);
-}
-.glass-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 60%);
-  pointer-events:none;border-radius:inherit;
-}
-.glass-card:hover{
-  border-color:var(--border-bright);
-  transform:translateY(-4px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.3),0 0 0 1px var(--border-bright);
-}
-.glass-card.shine:hover::after{
-  content:'';position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.08) 50%,transparent 60%);
-  animation:shine-sweep 0.6s ease forwards;
-}
-@keyframes shine-sweep{
-  from{transform:translateX(-100%);}
-  to{transform:translateX(100%);}
-}
+    .glass-card {
+      background: var(--surface);
+      backdrop-filter: var(--card-blur);
+      -webkit-backdrop-filter: var(--card-blur);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
 
-/* ============================================================
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--border-bright);
+    }
+
+    .glass-card.shine:hover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.08) 50%, transparent 60%);
+      animation: shine-sweep 0.6s ease forwards;
+    }
+
+    @keyframes shine-sweep {
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    /* ============================================================
    ABOUT
 ============================================================ */
-.about-grid{
-  display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start;
-}
-.about-photo-wrap{
-  position:relative;
-}
-.about-photo{
-  width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:32px;
-  border:1px solid var(--border);
-  box-shadow:0 30px 80px rgba(0,0,0,0.4);
-}
-.about-photo-glow{
-  position:absolute;inset:-30px;z-index:-1;
-  background:radial-gradient(circle at 50% 50%,var(--accent-glow),transparent 70%);
-  filter:blur(20px);
-}
-.about-badge{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  background:rgba(0,0,0,0.7);backdrop-filter:blur(20px);
-  border:1px solid var(--border-bright);border-radius:16px;
-  padding:12px 20px;white-space:nowrap;text-align:center;
-}
-[data-theme="light"] .about-badge{background:rgba(255,255,255,0.85);}
-.about-badge-title{font-size:13px;font-weight:700;color:var(--text);}
-.about-badge-sub{font-size:11px;color:var(--text-secondary);}
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      align-items: start;
+    }
 
-/* ---- Photo Slider ---- */
-.photo-slider{
-  position:relative;
-  width:100%;aspect-ratio:3/4;
-  border-radius:32px;
-  border:1px solid var(--border);
-  box-shadow:0 30px 80px rgba(0,0,0,0.4);
-  overflow:hidden;
-  /* ensure intrinsic height resolves for children */
-  display:block;
-}
-.photo-slider-track{
-  position:absolute;
-  top:0;left:0;
-  width:300%; /* 3 slides × 100% */
-  height:100%;
-  display:flex;
-  transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);
-  will-change:transform;
-}
-.photo-slide{
-  width:33.3333%;height:100%;flex-shrink:0;
-}
-.photo-slide img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:top center;
-  display:block;
-}
-.photo-slider-fade{
-  position:absolute;bottom:0;left:0;right:0;height:90px;
-  background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 100%);
-  pointer-events:none;border-radius:0 0 32px 32px;
-}
-.photo-slider-dots{
-  position:absolute;bottom:70px;left:50%;transform:translateX(-50%);
-  display:flex;gap:7px;z-index:3;
-}
-.photo-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:rgba(255,255,255,0.4);
-  border:none;padding:0;cursor:pointer;
-  transition:background 0.3s ease,transform 0.3s ease;
-}
-.photo-dot.active{
-  background:#fff;transform:scale(1.3);
-}
-.photo-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(0,0,0,0.45);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.18);
-  color:#fff;font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  z-index:3;transition:background 0.25s ease,opacity 0.25s ease;
-  opacity:0;
-}
-.photo-slider:hover .photo-arrow{opacity:1;}
-.photo-arrow:hover{background:rgba(10,132,255,0.6);}
-.photo-arrow.prev{left:12px;}
-.photo-arrow.next{right:12px;}
+    .about-photo-wrap {
+      position: relative;
+    }
 
-.about-content{}
-.about-intro{
-  font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:32px;
-}
-.about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;}
-.tag{
-  padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;
-  background:var(--surface);border:1px solid var(--border);
-  transition:all 0.25s ease;cursor:default;
-}
-.tag:hover{background:var(--surface-hover);border-color:var(--accent);color:var(--accent);}
-.tag.highlight{
-  background:rgba(10,132,255,0.12);border-color:rgba(10,132,255,0.4);color:var(--accent);
-}
-.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.highlight-item{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:18px;padding:20px;transition:all 0.25s ease;
-}
-.highlight-item:hover{border-color:var(--border-bright);background:var(--surface-hover);}
-.hi-icon{font-size:24px;margin-bottom:10px;}
-.hi-label{font-size:13px;font-weight:700;margin-bottom:4px;}
-.hi-value{font-size:12px;color:var(--text-secondary);}
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    }
 
-/* ============================================================
+    .about-photo-glow {
+      position: absolute;
+      inset: -30px;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 50%, var(--accent-glow), transparent 70%);
+      filter: blur(20px);
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-bright);
+      border-radius: 16px;
+      padding: 12px 20px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    [data-theme="light"] .about-badge {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .about-badge-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .about-badge-sub {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* ---- Photo Slider ---- */
+    .photo-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      /* ensure intrinsic height resolves for children */
+      display: block;
+    }
+
+    .photo-slider-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300%;
+      /* 3 slides × 100% */
+      height: 100%;
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    .photo-slide {
+      width: 33.3333%;
+      height: 100%;
+      flex-shrink: 0;
+    }
+
+    .photo-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .photo-slider-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: 0 0 32px 32px;
+    }
+
+    .photo-slider-dots {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 3;
+    }
+
+    .photo-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .photo-dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+
+    .photo-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: background 0.25s ease, opacity 0.25s ease;
+      opacity: 0;
+    }
+
+    .photo-slider:hover .photo-arrow {
+      opacity: 1;
+    }
+
+    .photo-arrow:hover {
+      background: rgba(10, 132, 255, 0.6);
+    }
+
+    .photo-arrow.prev {
+      left: 12px;
+    }
+
+    .photo-arrow.next {
+      right: 12px;
+    }
+
+    .about-content {}
+
+    .about-intro {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .tag:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .tag.highlight {
+      background: rgba(10, 132, 255, 0.12);
+      border-color: rgba(10, 132, 255, 0.4);
+      color: var(--accent);
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .highlight-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      transition: all 0.25s ease;
+    }
+
+    .highlight-item:hover {
+      border-color: var(--border-bright);
+      background: var(--surface-hover);
+    }
+
+    .hi-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .hi-label {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hi-value {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================================
    PROJECTS
 ============================================================ */
-.projects-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;
-}
-.project-card{
-  background:var(--surface);
-  backdrop-filter:var(--card-blur);
-  border:1px solid var(--border);
-  border-radius:28px;padding:0;overflow:hidden;
-  transition:all var(--transition);cursor:pointer;
-  position:relative;
-}
-.project-card::after{
-  content:'';position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 60%);
-  pointer-events:none;
-}
-.project-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 32px 80px rgba(0,0,0,0.4);
-  border-color:var(--border-bright);
-}
-.project-card.featured{
-  grid-column:span 2;
-}
-.project-header{
-  padding:28px 28px 0;display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;
-}
-.project-icon{
-  width:60px;height:60px;border-radius:18px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:28px;box-shadow:0 8px 24px rgba(0,0,0,0.2);
-  flex-shrink:0;
-}
-.project-badge{
-  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  padding:4px 12px;border-radius:20px;
-}
-.badge-featured{background:rgba(191,90,242,0.15);color:var(--accent2);border:1px solid rgba(191,90,242,0.3);}
-.badge-health{background:rgba(50,215,75,0.15);color:var(--accent3);border:1px solid rgba(50,215,75,0.3);}
-.badge-iot{background:rgba(10,132,255,0.15);color:var(--accent);border:1px solid rgba(10,132,255,0.3);}
-.badge-commerce{background:rgba(255,159,10,0.15);color:#FF9F0A;border:1px solid rgba(255,159,10,0.3);}
-.badge-edu{background:rgba(100,210,255,0.15);color:#64D2FF;border:1px solid rgba(100,210,255,0.3);}
-.project-body{padding:0 28px 28px;}
-.project-title{font-size:21px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;}
-.project-desc{font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;}
-.project-features{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
-.pf-item{
-  display:flex;align-items:center;gap:10px;
-  font-size:13px;color:var(--text-secondary);
-}
-.pf-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-.pf-dot.green{background:var(--accent3);}
-.pf-dot.purple{background:var(--accent2);}
-.project-tech{display:flex;flex-wrap:wrap;gap:7px;}
-.tech-chip{
-  font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px;
-  background:rgba(255,255,255,0.06);border:1px solid var(--border);
-  color:var(--text-tertiary);transition:all 0.2s ease;
-}
-.project-card:hover .tech-chip{border-color:var(--border-bright);color:var(--text-secondary);}
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
 
-/* Featured card extras */
-.featured-visual{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;
-  padding:0 28px 28px;
-}
-.featured-stat-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-}
-.featured-stat{
-  background:rgba(255,255,255,0.04);border:1px solid var(--border);
-  border-radius:14px;padding:14px;
-}
-.fs-icon{font-size:20px;margin-bottom:6px;}
-.fs-label{font-size:11px;color:var(--text-tertiary);margin-bottom:2px;}
-.fs-val{font-size:15px;font-weight:700;color:var(--accent);}
+    .project-card {
+      background: var(--surface);
+      backdrop-filter: var(--card-blur);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 0;
+      overflow: hidden;
+      transition: all var(--transition);
+      cursor: pointer;
+      position: relative;
+    }
 
-/* ============================================================
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+      border-color: var(--border-bright);
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+    }
+
+    .project-header {
+      padding: 28px 28px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .project-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+    .project-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .badge-featured {
+      background: rgba(191, 90, 242, 0.15);
+      color: var(--accent2);
+      border: 1px solid rgba(191, 90, 242, 0.3);
+    }
+
+    .badge-health {
+      background: rgba(50, 215, 75, 0.15);
+      color: var(--accent3);
+      border: 1px solid rgba(50, 215, 75, 0.3);
+    }
+
+    .badge-iot {
+      background: rgba(10, 132, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(10, 132, 255, 0.3);
+    }
+
+    .badge-commerce {
+      background: rgba(255, 159, 10, 0.15);
+      color: #FF9F0A;
+      border: 1px solid rgba(255, 159, 10, 0.3);
+    }
+
+    .badge-edu {
+      background: rgba(100, 210, 255, 0.15);
+      color: #64D2FF;
+      border: 1px solid rgba(100, 210, 255, 0.3);
+    }
+
+    .project-body {
+      padding: 0 28px 28px;
+    }
+
+    .project-title {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .project-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .pf-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .pf-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .pf-dot.green {
+      background: var(--accent3);
+    }
+
+    .pf-dot.purple {
+      background: var(--accent2);
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tech-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text-tertiary);
+      transition: all 0.2s ease;
+    }
+
+    .project-card:hover .tech-chip {
+      border-color: var(--border-bright);
+      color: var(--text-secondary);
+    }
+
+    /* Featured card extras */
+    .featured-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0 28px 28px;
+    }
+
+    .featured-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .featured-stat {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .fs-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .fs-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-bottom: 2px;
+    }
+
+    .fs-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ============================================================
    SKILLS
 ============================================================ */
-.skills-layout{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
-}
-.skills-categories{display:flex;flex-direction:column;gap:28px;}
-.skill-cat{}
-.skill-cat-title{
-  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--text-tertiary);margin-bottom:14px;
-}
-.skill-chips{display:flex;flex-wrap:wrap;gap:9px;}
-.skill-chip{
-  padding:10px 18px;border-radius:24px;font-size:13px;font-weight:600;
-  background:var(--surface);border:1px solid var(--border);
-  transition:all 0.3s ease;cursor:default;position:relative;overflow:hidden;
-}
-.skill-chip::before{
-  content:'';position:absolute;inset:0;
-  background:var(--grad1);opacity:0;transition:opacity 0.3s ease;border-radius:inherit;
-}
-.skill-chip span{position:relative;z-index:1;}
-.skill-chip:hover{border-color:var(--accent);transform:scale(1.05);}
-.skill-chip:hover::before{opacity:0.12;}
-.skill-chip.core{border-color:rgba(10,132,255,0.4);color:var(--accent);}
-.skill-chip.arch{border-color:rgba(191,90,242,0.4);color:var(--accent2);}
-.skill-chip.data{border-color:rgba(50,215,75,0.4);color:var(--accent3);}
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
 
-.skills-visual{position:relative;}
-.proficiency-list{display:flex;flex-direction:column;gap:18px;}
-.prof-item{}
-.prof-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.prof-name{font-size:14px;font-weight:600;}
-.prof-pct{font-size:13px;font-weight:700;color:var(--accent);}
-.prof-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;}
-[data-theme="light"] .prof-bar{background:rgba(0,0,0,0.06);}
-.prof-fill{height:100%;border-radius:3px;background:var(--grad1);width:0;transition:width 1.2s cubic-bezier(0.25,1,0.5,1);}
-.prof-fill.purple{background:var(--grad1);}
-.prof-fill.green{background:var(--grad2);}
+    .skills-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
 
-/* ============================================================
+    .skill-cat {}
+
+    .skill-cat-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill-chip {
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-chip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+    }
+
+    .skill-chip span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-chip:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .skill-chip:hover::before {
+      opacity: 0.12;
+    }
+
+    .skill-chip.core {
+      border-color: rgba(10, 132, 255, 0.4);
+      color: var(--accent);
+    }
+
+    .skill-chip.arch {
+      border-color: rgba(191, 90, 242, 0.4);
+      color: var(--accent2);
+    }
+
+    .skill-chip.data {
+      border-color: rgba(50, 215, 75, 0.4);
+      color: var(--accent3);
+    }
+
+    .skills-visual {
+      position: relative;
+    }
+
+    .proficiency-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .prof-item {}
+
+    .prof-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .prof-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .prof-pct {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .prof-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .prof-bar {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .prof-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--grad1);
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .prof-fill.purple {
+      background: var(--grad1);
+    }
+
+    .prof-fill.green {
+      background: var(--grad2);
+    }
+
+    /* ============================================================
    ACHIEVEMENTS
 ============================================================ */
-.achievements-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-}
-.ach-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:24px;padding:28px;text-align:center;
-  transition:all var(--transition);position:relative;overflow:hidden;
-}
-.ach-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 0%,var(--accent-glow),transparent 70%);
-  opacity:0;transition:opacity 0.4s ease;
-}
-.ach-card:hover{transform:translateY(-6px);border-color:var(--border-bright);}
-.ach-card:hover::before{opacity:1;}
-.ach-icon{font-size:36px;margin-bottom:14px;display:block;}
-.ach-title{font-size:16px;font-weight:700;margin-bottom:6px;}
-.ach-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
 
-/* ============================================================
+    .ach-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      text-align: center;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ach-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, var(--accent-glow), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .ach-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-bright);
+    }
+
+    .ach-card:hover::before {
+      opacity: 1;
+    }
+
+    .ach-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .ach-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .ach-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
    CONTACT
 ============================================================ */
-.contact-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
-}
-.contact-cta{
-  font-size:clamp(30px,3.5vw,48px);font-weight:800;letter-spacing:-2px;line-height:1.1;
-  margin-bottom:20px;
-}
-.contact-text{
-  font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:36px;
-}
-.contact-links{display:flex;flex-direction:column;gap:12px;}
-.contact-link{
-  display:flex;align-items:center;gap:16px;
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:18px;padding:18px 22px;
-  transition:all 0.3s ease;
-}
-.contact-link:hover{
-  background:var(--surface-hover);border-color:var(--border-bright);
-  transform:translateX(4px);
-}
-.cl-icon{
-  width:44px;height:44px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;
-}
-.cl-text{}
-.cl-label{font-size:11px;color:var(--text-tertiary);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
-.cl-value{font-size:14px;font-weight:600;color:var(--text);}
-.contact-right{}
-.contact-form{display:flex;flex-direction:column;gap:14px;}
-.form-field{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:14px 18px;
-  font-size:15px;color:var(--text);font-family:inherit;
-  transition:border-color 0.25s ease;outline:none;width:100%;
-  backdrop-filter:blur(10px);
-}
-.form-field:focus{border-color:var(--accent);}
-.form-field::placeholder{color:var(--text-tertiary);}
-textarea.form-field{resize:vertical;min-height:120px;}
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
 
-/* ============================================================
+    .contact-cta {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 22px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-bright);
+      transform: translateX(4px);
+    }
+
+    .cl-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .cl-text {}
+
+    .cl-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cl-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-right {}
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-field {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 15px;
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color 0.25s ease;
+      outline: none;
+      width: 100%;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-field:focus {
+      border-color: var(--accent);
+    }
+
+    .form-field::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    textarea.form-field {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ============================================================
    FOOTER
 ============================================================ */
-footer{
-  border-top:1px solid var(--border);
-  padding:40px 24px;max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.footer-logo{font-size:16px;font-weight:700;background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.footer-copy{font-size:13px;color:var(--text-tertiary);}
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* ============================================================
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ============================================================
    SCROLL ANIMATIONS
 ============================================================ */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.16,1,0.3,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-scale{opacity:0;transform:scale(0.94);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.16,1,0.3,1);}
-.reveal-scale.visible{opacity:1;transform:scale(1);}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.16,1,0.3,1);}
-.reveal-left.visible{opacity:1;transform:translateX(0);}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.16,1,0.3,1);}
-.reveal-right.visible{opacity:1;transform:translateX(0);}
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-/* stagger children */
-.stagger > *:nth-child(1){transition-delay:0s;}
-.stagger > *:nth-child(2){transition-delay:0.08s;}
-.stagger > *:nth-child(3){transition-delay:0.16s;}
-.stagger > *:nth-child(4){transition-delay:0.24s;}
-.stagger > *:nth-child(5){transition-delay:0.32s;}
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* ============================================================
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* stagger children */
+    .stagger>*:nth-child(1) {
+      transition-delay: 0s;
+    }
+
+    .stagger>*:nth-child(2) {
+      transition-delay: 0.08s;
+    }
+
+    .stagger>*:nth-child(3) {
+      transition-delay: 0.16s;
+    }
+
+    .stagger>*:nth-child(4) {
+      transition-delay: 0.24s;
+    }
+
+    .stagger>*:nth-child(5) {
+      transition-delay: 0.32s;
+    }
+
+    /* ============================================================
    SCROLL PROGRESS
 ============================================================ */
-.progress-bar{
-  position:fixed;top:0;left:0;height:2px;z-index:10000;
-  background:var(--grad1);width:0%;transition:width 0.1s linear;
-}
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      z-index: 10000;
+      background: var(--grad1);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
 
-/* ============================================================
+    /* ============================================================
    RESPONSIVE
 ============================================================ */
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;gap:40px;}
-  .hero-phones{height:320px;}
-  .iphone.phone-left,.iphone.phone-right{display:none;}
-  .iphone.phone-center{position:relative;left:auto;transform:none;}
-  @keyframes float-phone-center{
-    0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}
-  }
-  .iphone.phone-center{animation-name:float-phone-center-mobile;}
-  @keyframes float-phone-center-mobile{
-    0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}
-  }
-  .about-grid{grid-template-columns:1fr;}
-  .about-photo{max-height:400px;}
-  .projects-grid{grid-template-columns:1fr;}
-  .project-card.featured{grid-column:span 1;}
-  .featured-visual{grid-template-columns:1fr;}
-  .skills-layout{grid-template-columns:1fr;}
-  .achievements-grid{grid-template-columns:1fr 1fr;}
-  .contact-inner{grid-template-columns:1fr;}
-  .footer{flex-direction:column;gap:12px;text-align:center;}
-  nav .nav-links{display:none;}
-}
-@media(max-width:500px){
-  .achievements-grid{grid-template-columns:1fr;}
-  .hero-stats{gap:20px;}
-  .about-highlights{grid-template-columns:1fr;}
-}
+    @media(max-width:900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
 
-/* ============================================================
+      .hero-phones {
+        height: 320px;
+      }
+
+      .iphone.phone-left,
+      .iphone.phone-right {
+        display: none;
+      }
+
+      .iphone.phone-center {
+        position: relative;
+        left: auto;
+        transform: none;
+      }
+
+      @keyframes float-phone-center {
+
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+
+      .iphone.phone-center {
+        animation-name: float-phone-center-mobile;
+      }
+
+      @keyframes float-phone-center-mobile {
+
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo {
+        max-height: 400px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured {
+        grid-column: span 1;
+      }
+
+      .featured-visual {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .achievements-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      nav .nav-links {
+        display: none;
+      }
+    }
+
+    @media(max-width:500px) {
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ============================================================
    MISC UTILS
 ============================================================ */
-.divider{
-  width:100%;height:1px;background:var(--border);
-  max-width:1200px;margin:0 auto;
-}
-.gradient-text{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.gradient-text2{background:linear-gradient(135deg,#BF5AF2,#0A84FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.tag-ai{background:rgba(191,90,242,0.15);border-color:rgba(191,90,242,0.4);color:var(--accent2);}
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* floating orbs background */
-.orb{
-  position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;
-  animation:orb-drift 20s ease-in-out infinite;
-}
-.orb1{width:600px;height:600px;background:rgba(10,132,255,0.07);top:-200px;right:-100px;animation-delay:-5s;}
-.orb2{width:500px;height:500px;background:rgba(191,90,242,0.07);bottom:-200px;left:-100px;animation-delay:-12s;}
-.orb3{width:400px;height:400px;background:rgba(50,215,75,0.05);top:50%;left:50%;animation-delay:-8s;}
-@keyframes orb-drift{
-  0%,100%{transform:translate(0,0);}
-  33%{transform:translate(40px,-30px);}
-  66%{transform:translate(-20px,40px);}
-}
-</style>
+    .gradient-text {
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text2 {
+      background: linear-gradient(135deg, #BF5AF2, #0A84FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tag-ai {
+      background: rgba(191, 90, 242, 0.15);
+      border-color: rgba(191, 90, 242, 0.4);
+      color: var(--accent2);
+    }
+
+    /* floating orbs background */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      animation: orb-drift 20s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 600px;
+      height: 600px;
+      background: rgba(10, 132, 255, 0.07);
+      top: -200px;
+      right: -100px;
+      animation-delay: -5s;
+    }
+
+    .orb2 {
+      width: 500px;
+      height: 500px;
+      background: rgba(191, 90, 242, 0.07);
+      bottom: -200px;
+      left: -100px;
+      animation-delay: -12s;
+    }
+
+    .orb3 {
+      width: 400px;
+      height: 400px;
+      background: rgba(50, 215, 75, 0.05);
+      top: 50%;
+      left: 50%;
+      animation-delay: -8s;
+    }
+
+    @keyframes orb-drift {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      33% {
+        transform: translate(40px, -30px);
+      }
+
+      66% {
+        transform: translate(-20px, 40px);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Cursor Glow -->
-<div class="cursor-glow" id="cursorGlow"></div>
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- Background orbs -->
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+  <!-- Background orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
 
-<!-- Progress Bar -->
-<div class="progress-bar" id="progressBar"></div>
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
 
-<!-- Loader -->
-<div id="loader">
-  <div class="loader-logo">KH</div>
-  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-</div>
-
-<!-- ========== NAV ========== -->
-<nav>
-  <div class="nav-logo">Kathiravan H</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="nav-right">
-    <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
-    <a href="#contact" class="btn-primary" style="padding:10px 20px;font-size:13px;border-radius:12px;">Hire Me</a>
-  </div>
-</nav>
-
-<!-- ========== HERO ========== -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid">
-    <!-- Text -->
-    <div class="hero-text reveal">
-      <div class="hero-eyebrow">
-        <span></span>iOS Developer
-      </div>
-      <h1 class="hero-title">
-        <span class="line">Pixels to</span>
-        <span class="line gradient-text">Performance</span>
-      </h1>
-      <p class="hero-subtitle">
-        Crafting seamless iOS experiences with precision, performance, and purposeful design — specialising in HealthKit, AI & scalable architecture.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-secondary">Contact Me</a>
-      </div>
-      <div class="hero-stats stagger">
-        <div class="stat reveal">
-          <div class="stat-num">2.5+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num">5+</div>
-          <div class="stat-label">Apps Shipped</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num">HealthKit</div>
-          <div class="stat-label">AI & Wearables</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Phones -->
-    <div class="hero-phones reveal-right">
-      <!-- Left phone -->
-      <div class="iphone phone-left">
-        <div class="iphone-screen">
-          <div class="phone-app-icon" style="background:#fff;padding:4px;">
-            <img src="images/clarion.png" alt="Clarion" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"/>
-          </div>
-          <div class="phone-app-title">Clarion Farming</div>
-          <div class="phone-app-sub">Farm to Table</div>
-          <div class="phone-bars">
-            <div class="phone-bar accent3"></div>
-            <div class="phone-bar"></div>
-            <div class="phone-bar" style="width:60%;"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Center phone -->
-      <div class="iphone phone-center">
-        <div class="iphone-screen" style="background:linear-gradient(180deg,#050510 0%,#0a0520 100%);">
-          <div class="phone-app-icon" style="background:transparent;padding:0;">
-            <img src="images/health.png" alt="AI Health" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"/>
-          </div>
-          <div class="phone-app-title">AI Health & Wellness</div>
-          <div class="phone-app-sub">HealthKit · AI · Wearables</div>
-          <div class="phone-bars" style="margin-top:20px;">
-            <div class="phone-bar accent"></div>
-            <div class="phone-bar accent2"></div>
-            <div class="phone-bar accent3"></div>
-            <div class="phone-bar"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right phone -->
-      <div class="iphone phone-right">
-        <div class="iphone-screen">
-          <div class="phone-app-icon" style="background:#1a3aff;padding:4px;">
-            <img src="images/mouthcam.png" alt="MouthCam" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"/>
-          </div>
-          <div class="phone-app-title">MouthCam</div>
-          <div class="phone-app-sub">Powered by Dentulu</div>
-          <div class="phone-bars">
-            <div class="phone-bar accent"></div>
-            <div class="phone-bar"></div>
-            <div class="phone-bar" style="width:75%;"></div>
-          </div>
-        </div>
-      </div>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-logo">KH</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
     </div>
   </div>
-</div>
 
-<div class="divider"></div>
+  <!-- ========== NAV ========== -->
+  <nav>
+    <div class="nav-logo">Kathiravan H</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="#contact" class="btn-primary" style="padding:10px 20px;font-size:13px;border-radius:12px;">Hire Me</a>
+    </div>
+  </nav>
 
-<!-- ========== ABOUT ========== -->
-<section id="about">
-  <div class="about-grid">
-    <!-- Photo -->
-    <div class="reveal-left">
-      <div class="about-photo-wrap">
-        <div class="about-photo-glow"></div>
+  <!-- ========== ABOUT ========== -->
+  <section id="about">
+    <div class="about-grid">
+      <!-- Photo -->
+      <div class="reveal-left">
+        <div class="about-photo-wrap">
+          <div class="about-photo-glow"></div>
 
-        <!-- ── Photo Slider ── -->
-        <div class="photo-slider" id="aboutSlider">
-          <div class="photo-slider-track" id="aboutSliderTrack">
-            <div class="photo-slide">
-              <img src="images/profile.jpg" alt="Kathiravan H" />
+          <!-- ── Photo Slider ── -->
+          <div class="photo-slider" id="aboutSlider">
+            <div class="photo-slider-track" id="aboutSliderTrack">
+              <div class="photo-slide">
+                <img src="images/profile3.jpg" alt="Kathiravan H" style="object-position:right top;" />
+              </div>
+              <div class="photo-slide">
+                <img src="images/profile2.jpg" alt="Kathiravan H" style="object-position:left top;" />
+              </div>
+              <div class="photo-slide">
+                <img src="images/profile.jpg" alt="Kathiravan H" />
+              </div>
             </div>
-            <div class="photo-slide">
-              <img src="images/profile2.jpg" alt="Kathiravan H" style="object-position:left top;" />
-            </div>
-            <div class="photo-slide">
-              <img src="images/profile3.jpg" alt="Kathiravan H" />
+
+            <!-- Gradient fade for badge readability -->
+            <div class="photo-slider-fade"></div>
+
+            <!-- Arrow buttons -->
+            <button class="photo-arrow prev" id="sliderPrev" aria-label="Previous photo">&#8249;</button>
+            <button class="photo-arrow next" id="sliderNext" aria-label="Next photo">&#8250;</button>
+
+            <!-- Dot indicators -->
+            <div class="photo-slider-dots" id="sliderDots">
+              <button class="photo-dot active" data-index="0" aria-label="Photo 1"></button>
+              <button class="photo-dot" data-index="1" aria-label="Photo 2"></button>
+              <button class="photo-dot" data-index="2" aria-label="Photo 3"></button>
             </div>
           </div>
+          <!-- ── /Photo Slider ── -->
 
-          <!-- Gradient fade for badge readability -->
-          <div class="photo-slider-fade"></div>
-
-          <!-- Arrow buttons -->
-          <button class="photo-arrow prev" id="sliderPrev" aria-label="Previous photo">&#8249;</button>
-          <button class="photo-arrow next" id="sliderNext" aria-label="Next photo">&#8250;</button>
-
-          <!-- Dot indicators -->
-          <div class="photo-slider-dots" id="sliderDots">
-            <button class="photo-dot active" data-index="0" aria-label="Photo 1"></button>
-            <button class="photo-dot" data-index="1" aria-label="Photo 2"></button>
-            <button class="photo-dot" data-index="2" aria-label="Photo 3"></button>
+          <div class="about-badge">
+            <div class="about-badge-title">iOS Developer</div>
+            <div class="about-badge-sub">Swift · SwiftUI · HealthKit</div>
           </div>
         </div>
-        <!-- ── /Photo Slider ── -->
+      </div>
 
-        <div class="about-badge">
-          <div class="about-badge-title">iOS Developer</div>
-          <div class="about-badge-sub">Swift · SwiftUI · HealthKit</div>
+      <!-- Content -->
+      <div class="reveal-right">
+        <div class="section-eyebrow">About Me</div>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+
+          <!-- Text -->
+          <h2 class="section-title" style="margin:0;">
+            Kathiravan H<br />
+            <span class="gradient-text">iOS Developer</span>
+          </h2>
+
+          <!-- Apple Image (closer to text) -->
+          <div
+            style="width:120px;height:90px;border-radius:14px;overflow:hidden;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:#000;margin-left:8px;">
+
+            <img src="images/apple.png" style="max-width:85%;max-height:85%;object-fit:contain;" />
+
+          </div>
+
         </div>
+        <p class="about-intro">
+          I’m Kathiravan H, a mid-level iOS Developer with 2.5+ years of hands-on experience building scalable,
+          user-centric applications.<br><br>
+
+          I specialize in Swift, SwiftUI, and clean architecture (MVVM), with strong expertise in performance
+          optimization and real-time data handling.<br><br>
+
+          My work primarily focuses on HealthTech, AI-driven features, and IoT integrations, where I build reliable
+          applications that interact with wearable devices, process real-time health data, and deliver meaningful
+          insights to users.<br><br>
+
+          I’m passionate about writing clean, maintainable code and continuously improving app performance, UI/UX, and
+          architecture.
+        </p>
+        <div class="about-tags stagger">
+          <span class="tag highlight">Swift</span>
+          <span class="tag highlight">SwiftUI</span>
+          <span class="tag">UIKit</span>
+          <span class="tag">Combine</span>
+          <span class="tag">Async/Await</span>
+          <span class="tag highlight">HealthKit</span>
+          <span class="tag">MVVM</span>
+          <span class="tag">Clean Architecture</span>
+          <span class="tag">Core Data</span>
+          <span class="tag highlight">AI Integration</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">REST APIs</span>
+        </div>
+        <!-- <div class="about-highlights stagger">
+          <div class="highlight-item">
+            <div class="hi-icon">🏥</div>
+            <div class="hi-label">HealthTech Expert</div>
+            <div class="hi-value">HealthKit, wearables & AI-driven health monitoring</div>
+          </div>
+          <div class="highlight-item">
+            <div class="hi-icon">📡</div>
+            <div class="hi-label">IoT Integration</div>
+            <div class="hi-value">Bluetooth, Wi-Fi & wearable device connectivity</div>
+          </div> -->
       </div>
     </div>
-
-    <!-- Content -->
-    <div class="reveal-right">
-      <div class="section-eyebrow">About Me</div>
-      <h2 class="section-title">Building apps that<br/><span class="gradient-text">matter & perform</span></h2>
-      <p class="about-intro">
-        I'm Kathiravan H — an iOS Developer with 2.5+ years of experience crafting high-performance, user-first applications. My passion lies at the intersection of health technology, artificial intelligence, and elegant iOS architecture. From HealthKit-powered wellness apps to IoT-integrated dental solutions, I build software that genuinely impacts lives.
-      </p>
-      <div class="about-tags stagger">
-        <span class="tag highlight">Swift</span>
-        <span class="tag highlight">SwiftUI</span>
-        <span class="tag">UIKit</span>
-        <span class="tag">Combine</span>
-        <span class="tag">Async/Await</span>
-        <span class="tag highlight">HealthKit</span>
-        <span class="tag">MVVM</span>
-        <span class="tag">Clean Architecture</span>
-        <span class="tag">Core Data</span>
-        <span class="tag highlight">AI Integration</span>
-        <span class="tag">Firebase</span>
-        <span class="tag">REST APIs</span>
-      </div>
-      <div class="about-highlights stagger">
-        <div class="highlight-item">
-          <div class="hi-icon">🏥</div>
-          <div class="hi-label">HealthTech Expert</div>
-          <div class="hi-value">HealthKit, wearables & AI-driven health monitoring</div>
-        </div>
-        <div class="highlight-item">
-          <div class="hi-icon">⚡</div>
-          <div class="hi-label">Performance First</div>
-          <div class="hi-value">Optimised for speed, memory & battery efficiency</div>
-        </div>
-        <div class="highlight-item">
-          <div class="hi-icon">🏗️</div>
-          <div class="hi-label">Scalable Architecture</div>
-          <div class="hi-value">MVVM, Clean Arch & modular design patterns</div>
-        </div>
-        <div class="highlight-item">
-          <div class="hi-icon">📡</div>
-          <div class="hi-label">IoT Integration</div>
-          <div class="hi-value">Bluetooth, Wi-Fi & wearable device connectivity</div>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<!-- ========== PROJECTS ========== -->
-<section id="projects">
-  <div class="reveal">
-    <div class="section-eyebrow">Featured Work</div>
-    <h2 class="section-title">Apps I've built</h2>
-    <p class="section-subtitle">A curated collection of iOS applications — each showcasing real-world engineering, thoughtful UX, and measurable impact.</p>
-  </div>
-
-  <div class="projects-grid stagger">
-
-    <!-- AI Health App — FEATURED -->
-    <div class="project-card featured glass-card shine reveal">
-      <div class="project-header">
-        <div class="project-icon" style="background:transparent;padding:0;overflow:hidden;">
-          <img src="images/health.png" alt="AI Health" style="width:100%;height:100%;object-fit:cover;border-radius:18px;"/>
+  <!-- ========== HERO ========== -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid">
+      <!-- Text -->
+      <div class="hero-text reveal">
+        <div class="hero-eyebrow">
+          <span></span>iOS Developer
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <span class="project-badge badge-featured">⭐ Highlight</span>
-          <span class="project-badge badge-health">HealthKit</span>
-          <span class="project-badge" style="background:rgba(10,132,255,0.12);color:var(--accent);border:1px solid rgba(10,132,255,0.3);">AI Powered</span>
+        <h1 class="hero-title">
+          <span class="line">Pixels to</span>
+          <span class="line gradient-text">Performance</span>
+        </h1>
+        <p class="hero-subtitle">
+          Crafting seamless iOS experiences with precision, performance, and purposeful design — specialising in
+          HealthKit, AI & scalable architecture.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#contact" class="btn-secondary">Contact Me</a>
+        </div>
+        <div class="hero-stats stagger">
+          <div class="stat reveal">
+            <div class="stat-num">2.5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Apps Shipped</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat-num">HealthKit</div>
+            <div class="stat-label">AI & Wearables</div>
+          </div>
         </div>
       </div>
-      <div class="project-body">
-        <div class="project-title">AI Health &amp; Wellness App</div>
-        <div class="project-desc">
-          A comprehensive AI-driven health platform that integrates Apple HealthKit, wearable devices, and machine learning to deliver personalised wellness insights. From food recognition to mental wellness tracking — all in one intelligent iOS experience.
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-          <div>
-            <div class="project-features">
-              <div class="pf-item"><div class="pf-dot"></div>HealthKit — steps, heart rate, sleep & calories</div>
-              <div class="pf-item"><div class="pf-dot green"></div>AI food recognition & nutrition tracking</div>
-              <div class="pf-item"><div class="pf-dot purple"></div>Mental wellness & mood monitoring</div>
-              <div class="pf-item"><div class="pf-dot"></div>Workout tracking & exercise analytics</div>
-              <div class="pf-item"><div class="pf-dot green"></div>Smartwatch & smart ring integration</div>
-              <div class="pf-item"><div class="pf-dot purple"></div>Siri integration & voice shortcuts</div>
+
+      <!-- Phones -->
+      <div class="hero-phones reveal-right">
+        <!-- Left phone -->
+        <div class="iphone phone-left">
+          <div class="iphone-screen">
+            <div class="phone-app-icon" style="background:#fff;padding:4px;">
+              <img src="images/clarion.png" alt="Clarion"
+                style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
             </div>
-          </div>
-          <div class="featured-stat-grid">
-            <div class="featured-stat">
-              <div class="fs-icon">🏃</div>
-              <div class="fs-label">Activity</div>
-              <div class="fs-val">Steps & HR</div>
-            </div>
-            <div class="featured-stat">
-              <div class="fs-icon">🧠</div>
-              <div class="fs-label">AI Engine</div>
-              <div class="fs-val">Food + Mood</div>
-            </div>
-            <div class="featured-stat">
-              <div class="fs-icon">⌚</div>
-              <div class="fs-label">Wearables</div>
-              <div class="fs-val">Watch + Ring</div>
-            </div>
-            <div class="featured-stat">
-              <div class="fs-icon">🎙️</div>
-              <div class="fs-label">Voice</div>
-              <div class="fs-val">Siri Ready</div>
+            <div class="phone-app-title">Clarion Farming</div>
+            <div class="phone-app-sub">Farm to Table</div>
+            <div class="phone-bars">
+              <div class="phone-bar accent3"></div>
+              <div class="phone-bar"></div>
+              <div class="phone-bar" style="width:60%;"></div>
             </div>
           </div>
         </div>
-        <div class="project-tech" style="margin-top:18px;">
-          <span class="tech-chip">Swift</span>
-          <span class="tech-chip">SwiftUI</span>
-          <span class="tech-chip">HealthKit</span>
-          <span class="tech-chip">CoreML</span>
-          <span class="tech-chip">SiriKit</span>
-          <span class="tech-chip">Combine</span>
-          <span class="tech-chip">Async/Await</span>
-          <span class="tech-chip">MVVM</span>
-          <span class="tech-chip">REST API</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- MouthCam -->
-    <div class="project-card glass-card shine reveal">
-      <div class="project-header">
-        <div class="project-icon" style="background:#1155cc;padding:6px;overflow:hidden;">
-          <img src="images/mouthcam.png" alt="MouthCam" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"/>
-        </div>
-        <span class="project-badge badge-iot">IoT + Camera</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">MouthCam</div>
-        <div class="project-desc">Revolutionary dental health iOS app powering the Dentulu MouthCam device. Seamlessly integrates camera access and wireless device pairing for real-time oral cavity examination.</div>
-        <div class="project-features">
-          <div class="pf-item"><div class="pf-dot"></div>AVCaptureDevice API — real-time video & images</div>
-          <div class="pf-item"><div class="pf-dot green"></div>Core Bluetooth — BLE device pairing</div>
-          <div class="pf-item"><div class="pf-dot purple"></div>Wi-Fi device connectivity & control</div>
-          <div class="pf-item"><div class="pf-dot"></div>Power button detection & auto-pairing</div>
-        </div>
-        <div class="project-tech">
-          <span class="tech-chip">Swift</span>
-          <span class="tech-chip">AVFoundation</span>
-          <span class="tech-chip">Core Bluetooth</span>
-          <span class="tech-chip">UIKit</span>
-          <span class="tech-chip">Wi-Fi</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Clarion Farming -->
-    <div class="project-card glass-card shine reveal">
-      <div class="project-header">
-        <div class="project-icon" style="background:#fff;padding:6px;overflow:hidden;">
-          <img src="images/clarion.png" alt="Clarion Farming" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"/>
-        </div>
-        <span class="project-badge badge-commerce">E-Commerce</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">Clarion Farming</div>
-        <div class="project-desc">Farm-to-table grocery delivery app connecting consumers directly with locally sourced fresh produce. Features complete payment integration and real-time push notifications.</div>
-        <div class="project-features">
-          <div class="pf-item"><div class="pf-dot green"></div>Razorpay payment gateway integration</div>
-          <div class="pf-item"><div class="pf-dot"></div>Firebase Cloud Messaging push notifications</div>
-          <div class="pf-item"><div class="pf-dot purple"></div>Core Data — offline storage & management</div>
-          <div class="pf-item"><div class="pf-dot green"></div>Browse, order & doorstep delivery</div>
-        </div>
-        <div class="project-tech">
-          <span class="tech-chip">Swift</span>
-          <span class="tech-chip">UIKit</span>
-          <span class="tech-chip">Core Data</span>
-          <span class="tech-chip">Firebase</span>
-          <span class="tech-chip">Razorpay</span>
-          <span class="tech-chip">REST API</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SIMATS Stay -->
-    <div class="project-card glass-card shine reveal">
-      <div class="project-header">
-        <div class="project-icon" style="background:#fff;padding:4px;overflow:hidden;">
-          <img src="images/simats.png" alt="SIMATS" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"/>
-        </div>
-        <span class="project-badge badge-edu">EdTech</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">SIMATS Stay</div>
-        <div class="project-desc">Comprehensive hostel management app for SIMATS college students. Streamlines room allocation, maintenance requests and student-administration communication in one unified platform.</div>
-        <div class="project-features">
-          <div class="pf-item"><div class="pf-dot purple"></div>Smart room allocation & management</div>
-          <div class="pf-item"><div class="pf-dot"></div>Maintenance request & tracking system</div>
-          <div class="pf-item"><div class="pf-dot green"></div>Student–admin communication portal</div>
-          <div class="pf-item"><div class="pf-dot purple"></div>Real-time notifications & updates</div>
-        </div>
-        <div class="project-tech">
-          <span class="tech-chip">Swift</span>
-          <span class="tech-chip">SwiftUI</span>
-          <span class="tech-chip">Firebase</span>
-          <span class="tech-chip">MVVM</span>
-          <span class="tech-chip">REST API</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- PCOS -->
-    <div class="project-card glass-card shine reveal">
-      <div class="project-header">
-        <div class="project-icon" style="background:#fff;padding:4px;overflow:hidden;">
-          <img src="images/pcos.png" alt="PCOS" style="width:100%;height:100%;object-fit:contain;border-radius:12px;"/>
-        </div>
-        <span class="project-badge badge-health">Women's Health</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">PCOS Doctor &amp; Patient</div>
-        <div class="project-desc">Holistic health management app for women navigating Polycystic Ovary Syndrome. Dual-interface design for both patients and healthcare providers with full health monitoring.</div>
-        <div class="project-features">
-          <div class="pf-item"><div class="pf-dot purple"></div>Menstrual cycle tracking & analytics</div>
-          <div class="pf-item"><div class="pf-dot green"></div>Personalised daily food plan schedules</div>
-          <div class="pf-item"><div class="pf-dot"></div>Guided exercise video library</div>
-          <div class="pf-item"><div class="pf-dot purple"></div>Doctor–patient communication & monitoring</div>
-        </div>
-        <div class="project-tech">
-          <span class="tech-chip">Swift</span>
-          <span class="tech-chip">UIKit</span>
-          <span class="tech-chip">Firebase</span>
-          <span class="tech-chip">HealthKit</span>
-          <span class="tech-chip">AVKit</span>
-          <span class="tech-chip">MVVM</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ========== SKILLS ========== -->
-<section id="skills">
-  <div class="reveal">
-    <div class="section-eyebrow">Technical Skills</div>
-    <h2 class="section-title">My toolkit</h2>
-    <p class="section-subtitle">A comprehensive stack honed across production-grade iOS applications — from architecture to integration.</p>
-  </div>
-
-  <div class="skills-layout">
-    <!-- Categories -->
-    <div class="skills-categories reveal-left">
-
-      <div class="skill-cat">
-        <div class="skill-cat-title">Core Languages & Frameworks</div>
-        <div class="skill-chips stagger">
-          <div class="skill-chip core"><span>Swift</span></div>
-          <div class="skill-chip core"><span>SwiftUI</span></div>
-          <div class="skill-chip core"><span>UIKit</span></div>
-          <div class="skill-chip core"><span>Objective-C</span></div>
-        </div>
-      </div>
-
-      <div class="skill-cat">
-        <div class="skill-cat-title">Architecture & Concurrency</div>
-        <div class="skill-chips stagger">
-          <div class="skill-chip arch"><span>MVVM</span></div>
-          <div class="skill-chip arch"><span>Clean Architecture</span></div>
-          <div class="skill-chip arch"><span>Combine</span></div>
-          <div class="skill-chip arch"><span>Async/Await</span></div>
-          <div class="skill-chip arch"><span>Dependency Injection</span></div>
-        </div>
-      </div>
-
-      <div class="skill-cat">
-        <div class="skill-cat-title">Data & Storage</div>
-        <div class="skill-chips stagger">
-          <div class="skill-chip data"><span>Core Data</span></div>
-          <div class="skill-chip data"><span>Firebase</span></div>
-          <div class="skill-chip data"><span>REST APIs</span></div>
-          <div class="skill-chip data"><span>CloudKit</span></div>
-        </div>
-      </div>
-
-      <div class="skill-cat">
-        <div class="skill-cat-title">Specialisations</div>
-        <div class="skill-chips stagger">
-          <div class="skill-chip" style="border-color:rgba(10,132,255,0.4);color:var(--accent);"><span>HealthKit</span></div>
-          <div class="skill-chip" style="border-color:rgba(191,90,242,0.4);color:var(--accent2);"><span>CoreML / AI</span></div>
-          <div class="skill-chip" style="border-color:rgba(50,215,75,0.4);color:var(--accent3);"><span>Core Bluetooth</span></div>
-          <div class="skill-chip" style="border-color:rgba(10,132,255,0.4);color:var(--accent);"><span>AVFoundation</span></div>
-          <div class="skill-chip" style="border-color:rgba(191,90,242,0.4);color:var(--accent2);"><span>SiriKit</span></div>
-          <div class="skill-chip" style="border-color:rgba(50,215,75,0.4);color:var(--accent3);"><span>Push Notifications</span></div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Proficiency bars -->
-    <div class="skills-visual reveal-right">
-      <div class="proficiency-list" id="profList">
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">Swift / SwiftUI</span><span class="prof-pct">95%</span></div>
-          <div class="prof-bar"><div class="prof-fill" data-width="95"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">UIKit</span><span class="prof-pct">90%</span></div>
-          <div class="prof-bar"><div class="prof-fill purple" data-width="90"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">HealthKit & Wearables</span><span class="prof-pct">88%</span></div>
-          <div class="prof-bar"><div class="prof-fill green" data-width="88"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">MVVM / Clean Architecture</span><span class="prof-pct">92%</span></div>
-          <div class="prof-bar"><div class="prof-fill" data-width="92"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">Firebase & Backend Integration</span><span class="prof-pct">85%</span></div>
-          <div class="prof-bar"><div class="prof-fill purple" data-width="85"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">Core Bluetooth / IoT</span><span class="prof-pct">82%</span></div>
-          <div class="prof-bar"><div class="prof-fill green" data-width="82"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">Combine / Async-Await</span><span class="prof-pct">87%</span></div>
-          <div class="prof-bar"><div class="prof-fill" data-width="87"></div></div>
-        </div>
-        <div class="prof-item">
-          <div class="prof-header"><span class="prof-name">AI / CoreML Integration</span><span class="prof-pct">80%</span></div>
-          <div class="prof-bar"><div class="prof-fill purple" data-width="80"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ========== ACHIEVEMENTS ========== -->
-<section id="achievements">
-  <div class="reveal">
-    <div class="section-eyebrow">Achievements</div>
-    <h2 class="section-title">What sets me apart</h2>
-  </div>
-  <div class="achievements-grid stagger">
-    <div class="ach-card reveal-scale">
-      <span class="ach-icon">🏥</span>
-      <div class="ach-title">HealthTech Expertise</div>
-      <div class="ach-desc">Deep integration of HealthKit, wearable sensors, and AI for real-world clinical and wellness apps.</div>
-    </div>
-    <div class="ach-card reveal-scale">
-      <span class="ach-icon">⚡</span>
-      <div class="ach-title">High Performance Apps</div>
-      <div class="ach-desc">Consistently optimised for 60fps rendering, minimal memory footprint, and efficient battery usage.</div>
-    </div>
-    <div class="ach-card reveal-scale">
-      <span class="ach-icon">📡</span>
-      <div class="ach-title">IoT Integration</div>
-      <div class="ach-desc">Shipped production apps with Core Bluetooth & Wi-Fi hardware connectivity for medical IoT devices.</div>
-    </div>
-    <div class="ach-card reveal-scale">
-      <span class="ach-icon">🏗️</span>
-      <div class="ach-title">Scalable Architecture</div>
-      <div class="ach-desc">Championed MVVM + Clean Architecture across all projects, enabling rapid feature development at scale.</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ========== CONTACT ========== -->
-<section id="contact">
-  <div class="contact-inner">
-    <!-- Left -->
-    <div class="reveal-left">
-      <div class="section-eyebrow">Get In Touch</div>
-      <h2 class="contact-cta">Let's build something <span class="gradient-text">great together</span></h2>
-      <p class="contact-text">
-        Whether you're looking for an experienced iOS developer, want to collaborate on a HealthTech project, or just want to talk about Apple platforms — my inbox is always open.
-      </p>
-      <div class="contact-links stagger">
-        <a href="mailto:kathiravan.iosdev@gmail.com" class="contact-link">
-          <div class="cl-icon" style="background:rgba(10,132,255,0.15);">📧</div>
-          <div class="cl-text">
-            <div class="cl-label">Email</div>
-            <div class="cl-value">kathiravan.iosdev@gmail.com</div>
+        <!-- Center phone -->
+        <div class="iphone phone-center">
+          <div class="iphone-screen" style="background:linear-gradient(180deg,#050510 0%,#0a0520 100%);">
+            <div class="phone-app-icon" style="background:transparent;padding:0;">
+              <img src="images/health.png" alt="AI Health"
+                style="width:100%;height:100%;object-fit:cover;border-radius:14px;" />
+            </div>
+            <div class="phone-app-title">AI Health & Wellness</div>
+            <div class="phone-app-sub">HealthKit · AI · Wearables</div>
+            <div class="phone-bars" style="margin-top:20px;">
+              <div class="phone-bar accent"></div>
+              <div class="phone-bar accent2"></div>
+              <div class="phone-bar accent3"></div>
+              <div class="phone-bar"></div>
+            </div>
           </div>
-        </a>
-        <a href="https://linkedin.com/in/kathiravan-h" target="_blank" class="contact-link">
-          <div class="cl-icon" style="background:rgba(0,119,181,0.15);">💼</div>
-          <div class="cl-text">
-            <div class="cl-label">LinkedIn</div>
-            <div class="cl-value">linkedin.com/in/kathiravan-h</div>
-          </div>
-        </a>
-        <a href="https://github.com/kathiravaniOS" target="_blank" class="contact-link">
-          <div class="cl-icon" style="background:rgba(255,255,255,0.08);">🐙</div>
-          <div class="cl-text">
-            <div class="cl-label">GitHub</div>
-            <div class="cl-value">github.com/kathiravaniOS</div>
-          </div>
-        </a>
-        <a href="#" class="contact-link" style="background:linear-gradient(135deg,rgba(10,132,255,0.12),rgba(191,90,242,0.12));border-color:rgba(10,132,255,0.3);">
-          <div class="cl-icon" style="background:var(--grad1);">📄</div>
-          <div class="cl-text">
-            <div class="cl-label">Resume</div>
-            <div class="cl-value">Download CV — iOS Developer</div>
-          </div>
-        </a>
-      </div>
-    </div>
+        </div>
 
-    <!-- Right — form -->
-    <div class="reveal-right">
-      <div class="glass-card" style="padding:36px;">
-        <div style="font-size:20px;font-weight:700;margin-bottom:8px;">Send a message</div>
-        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:28px;">I typically respond within 24 hours.</div>
-        <form class="contact-form" onsubmit="handleForm(event)">
-          <input type="text" class="form-field" placeholder="Your Name" required/>
-          <input type="email" class="form-field" placeholder="Your Email" required/>
-          <input type="text" class="form-field" placeholder="Subject"/>
-          <textarea class="form-field" placeholder="Your message..." rows="5"></textarea>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:14px;">
-            Send Message ✉️
-          </button>
-        </form>
-        <div id="form-success" style="display:none;margin-top:16px;text-align:center;padding:14px;background:rgba(50,215,75,0.12);border:1px solid rgba(50,215,75,0.3);border-radius:12px;font-size:14px;color:var(--accent3);">
-          ✅ Message sent! I'll get back to you soon.
+        <!-- Right phone -->
+        <div class="iphone phone-right">
+          <div class="iphone-screen">
+            <div class="phone-app-icon" style="background:#1a3aff;padding:4px;">
+              <img src="images/mouthcam.png" alt="MouthCam"
+                style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+            </div>
+            <div class="phone-app-title">MouthCam</div>
+            <div class="phone-app-sub">Powered by Dentulu</div>
+            <div class="phone-bars">
+              <div class="phone-bar accent"></div>
+              <div class="phone-bar"></div>
+              <div class="phone-bar" style="width:75%;"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ========== FOOTER ========== -->
-<div class="divider"></div>
-<footer>
-  <div class="footer-logo">Kathiravan H</div>
-  <div class="footer-copy">© 2025 Kathiravan H. Crafted with ❤️ in Swift & HTML.</div>
-</footer>
+  <div class="divider"></div>
 
-<!-- ========== SCRIPTS ========== -->
-<script>
-// ---- Loader ----
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-  }, 1900);
-});
 
-// ---- Theme toggle ----
-const themeBtn = document.getElementById('themeToggle');
-themeBtn.addEventListener('click', () => {
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  themeBtn.textContent = isDark ? '🌙' : '☀️';
-});
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects">
+    <div class="reveal">
+      <div class="section-eyebrow">Featured Work</div>
+      <h2 class="section-title">Apps I've built</h2>
+      <p class="section-subtitle">A curated collection of iOS applications — each showcasing real-world engineering,
+        thoughtful UX, and measurable impact.</p>
+    </div>
 
-// ---- Cursor glow ----
-const glow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
+    <div class="projects-grid stagger">
 
-// ---- Scroll progress ----
-const bar = document.getElementById('progressBar');
-window.addEventListener('scroll', () => {
-  const max = document.body.scrollHeight - window.innerHeight;
-  bar.style.width = (window.scrollY / max * 100) + '%';
-});
+      <!-- AI Health App — FEATURED -->
+      <div class="project-card featured glass-card shine reveal">
+        <div class="project-header">
+          <div class="project-icon" style="background:transparent;padding:0;overflow:hidden;">
+            <img src="images/health.png" alt="AI Health"
+              style="width:100%;height:100%;object-fit:cover;border-radius:18px;" />
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="project-badge badge-featured">⭐ Highlight</span>
+            <span class="project-badge badge-health">HealthKit</span>
+            <span class="project-badge"
+              style="background:rgba(10,132,255,0.12);color:var(--accent);border:1px solid rgba(10,132,255,0.3);">AI
+              Powered</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">AI Health &amp; Wellness App</div>
+          <div class="project-desc">
+            A comprehensive AI-driven health platform that integrates Apple HealthKit, wearable devices, and machine
+            learning to deliver personalised wellness insights. From food recognition to mental wellness tracking — all
+            in one intelligent iOS experience.
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div>
+              <div class="project-features">
+                <div class="pf-item">
+                  <div class="pf-dot"></div>HealthKit — steps, heart rate, sleep & calories
+                </div>
+                <div class="pf-item">
+                  <div class="pf-dot green"></div>AI food recognition & nutrition tracking
+                </div>
+                <div class="pf-item">
+                  <div class="pf-dot purple"></div>Mental wellness & mood monitoring
+                </div>
+                <div class="pf-item">
+                  <div class="pf-dot"></div>Workout tracking & exercise analytics
+                </div>
+                <div class="pf-item">
+                  <div class="pf-dot green"></div>Smartwatch & smart ring integration
+                </div>
+                <div class="pf-item">
+                  <div class="pf-dot purple"></div>Siri integration & voice shortcuts
+                </div>
+              </div>
+            </div>
+            <div class="featured-stat-grid">
+              <div class="featured-stat">
+                <div class="fs-icon">🏃</div>
+                <div class="fs-label">Activity</div>
+                <div class="fs-val">Steps & HR</div>
+              </div>
+              <div class="featured-stat">
+                <div class="fs-icon">🧠</div>
+                <div class="fs-label">AI Engine</div>
+                <div class="fs-val">Food + Mood</div>
+              </div>
+              <div class="featured-stat">
+                <div class="fs-icon">⌚</div>
+                <div class="fs-label">Wearables</div>
+                <div class="fs-val">Watch + Ring</div>
+              </div>
+              <div class="featured-stat">
+                <div class="fs-icon">🎙️</div>
+                <div class="fs-label">Voice</div>
+                <div class="fs-val">Siri Ready</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-tech" style="margin-top:18px;">
+            <span class="tech-chip">Swift</span>
+            <span class="tech-chip">SwiftUI</span>
+            <span class="tech-chip">HealthKit</span>
+            <span class="tech-chip">CoreML</span>
+            <span class="tech-chip">SiriKit</span>
+            <span class="tech-chip">Combine</span>
+            <span class="tech-chip">Async/Await</span>
+            <span class="tech-chip">MVVM</span>
+            <span class="tech-chip">REST API</span>
+          </div>
+        </div>
+      </div>
 
-// ---- Reveal on scroll ----
-const reveals = document.querySelectorAll('.reveal,.reveal-scale,.reveal-left,.reveal-right');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.classList.add('visible');
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(el => io.observe(el));
+      <!-- MouthCam -->
+      <div class="project-card glass-card shine reveal">
+        <div class="project-header">
+          <div class="project-icon" style="background:#1155cc;padding:6px;overflow:hidden;">
+            <img src="images/mouthcam.png" alt="MouthCam"
+              style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+          </div>
+          <span class="project-badge badge-iot">IoT + Camera</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">MouthCam</div>
+          <div class="project-desc">Revolutionary dental health iOS app powering the Dentulu MouthCam device. Seamlessly
+            integrates camera access and wireless device pairing for real-time oral cavity examination.</div>
+          <div class="project-features">
+            <div class="pf-item">
+              <div class="pf-dot"></div>AVCaptureDevice API — real-time video & images
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot green"></div>Core Bluetooth — BLE device pairing
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot purple"></div>Wi-Fi device connectivity & control
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot"></div>Power button detection & auto-pairing
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">Swift</span>
+            <span class="tech-chip">AVFoundation</span>
+            <span class="tech-chip">Core Bluetooth</span>
+            <span class="tech-chip">UIKit</span>
+            <span class="tech-chip">Wi-Fi</span>
+          </div>
+        </div>
+      </div>
 
-// ---- Proficiency bars animation ----
-const profIO = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.querySelectorAll('.prof-fill').forEach(fill => {
-        fill.style.width = fill.dataset.width + '%';
+      <!-- Clarion Farming -->
+      <div class="project-card glass-card shine reveal">
+        <div class="project-header">
+          <div class="project-icon" style="background:#fff;padding:6px;overflow:hidden;">
+            <img src="images/clarion.png" alt="Clarion Farming"
+              style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+          </div>
+          <span class="project-badge badge-commerce">E-Commerce</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Clarion Farming</div>
+          <div class="project-desc">Farm-to-table grocery delivery app connecting consumers directly with locally
+            sourced fresh produce. Features complete payment integration and real-time push notifications.</div>
+          <div class="project-features">
+            <div class="pf-item">
+              <div class="pf-dot green"></div>Razorpay payment gateway integration
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot"></div>Firebase Cloud Messaging push notifications
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot purple"></div>Core Data — offline storage & management
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot green"></div>Browse, order & doorstep delivery
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">Swift</span>
+            <span class="tech-chip">UIKit</span>
+            <span class="tech-chip">Core Data</span>
+            <span class="tech-chip">Firebase</span>
+            <span class="tech-chip">Razorpay</span>
+            <span class="tech-chip">REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIMATS Stay -->
+      <div class="project-card glass-card shine reveal">
+        <div class="project-header">
+          <div class="project-icon" style="background:#fff;padding:4px;overflow:hidden;">
+            <img src="images/simats.png" alt="SIMATS"
+              style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+          </div>
+          <span class="project-badge badge-edu">EdTech</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">SIMATS Stay</div>
+          <div class="project-desc">Comprehensive hostel management app for SIMATS college students. Streamlines room
+            allocation, maintenance requests and student-administration communication in one unified platform.</div>
+          <div class="project-features">
+            <div class="pf-item">
+              <div class="pf-dot purple"></div>Smart room allocation & management
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot"></div>Maintenance request & tracking system
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot green"></div>Student–admin communication portal
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot purple"></div>Real-time notifications & updates
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">Swift</span>
+            <span class="tech-chip">SwiftUI</span>
+            <span class="tech-chip">Firebase</span>
+            <span class="tech-chip">MVVM</span>
+            <span class="tech-chip">REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PCOS -->
+      <div class="project-card glass-card shine reveal">
+        <div class="project-header">
+          <div class="project-icon" style="background:#fff;padding:4px;overflow:hidden;">
+            <img src="images/pcos.png" alt="PCOS"
+              style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+          </div>
+          <span class="project-badge badge-health">Women's Health</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">PCOS Doctor &amp; Patient</div>
+          <div class="project-desc">Holistic health management app for women navigating Polycystic Ovary Syndrome.
+            Dual-interface design for both patients and healthcare providers with full health monitoring.</div>
+          <div class="project-features">
+            <div class="pf-item">
+              <div class="pf-dot purple"></div>Menstrual cycle tracking & analytics
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot green"></div>Personalised daily food plan schedules
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot"></div>Guided exercise video library
+            </div>
+            <div class="pf-item">
+              <div class="pf-dot purple"></div>Doctor–patient communication & monitoring
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-chip">Swift</span>
+            <span class="tech-chip">UIKit</span>
+            <span class="tech-chip">Firebase</span>
+            <span class="tech-chip">HealthKit</span>
+            <span class="tech-chip">AVKit</span>
+            <span class="tech-chip">MVVM</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills">
+    <div class="reveal">
+      <div class="section-eyebrow">Technical Skills</div>
+      <h2 class="section-title">My toolkit</h2>
+      <p class="section-subtitle">A comprehensive stack honed across production-grade iOS applications — from
+        architecture to integration.</p>
+    </div>
+
+    <div class="skills-layout">
+      <!-- Categories -->
+      <div class="skills-categories reveal-left">
+
+        <div class="skill-cat">
+          <div class="skill-cat-title">Core Languages & Frameworks</div>
+          <div class="skill-chips stagger">
+            <div class="skill-chip core"><span>Swift</span></div>
+            <div class="skill-chip core"><span>SwiftUI</span></div>
+            <div class="skill-chip core"><span>UIKit</span></div>
+            <div class="skill-chip core"><span>Objective-C</span></div>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <div class="skill-cat-title">Architecture & Concurrency</div>
+          <div class="skill-chips stagger">
+            <div class="skill-chip arch"><span>MVVM</span></div>
+            <div class="skill-chip arch"><span>Clean Architecture</span></div>
+            <div class="skill-chip arch"><span>Combine</span></div>
+            <div class="skill-chip arch"><span>Async/Await</span></div>
+            <div class="skill-chip arch"><span>Dependency Injection</span></div>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <div class="skill-cat-title">Data & Storage</div>
+          <div class="skill-chips stagger">
+            <div class="skill-chip data"><span>Core Data</span></div>
+            <div class="skill-chip data"><span>Firebase</span></div>
+            <div class="skill-chip data"><span>REST APIs</span></div>
+            <div class="skill-chip data"><span>CloudKit</span></div>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <div class="skill-cat-title">Specialisations</div>
+          <div class="skill-chips stagger">
+            <div class="skill-chip" style="border-color:rgba(10,132,255,0.4);color:var(--accent);">
+              <span>HealthKit</span>
+            </div>
+            <div class="skill-chip" style="border-color:rgba(191,90,242,0.4);color:var(--accent2);"><span>CoreML /
+                AI</span></div>
+            <div class="skill-chip" style="border-color:rgba(50,215,75,0.4);color:var(--accent3);"><span>Core
+                Bluetooth</span></div>
+            <div class="skill-chip" style="border-color:rgba(10,132,255,0.4);color:var(--accent);">
+              <span>AVFoundation</span>
+            </div>
+            <div class="skill-chip" style="border-color:rgba(191,90,242,0.4);color:var(--accent2);"><span>SiriKit</span>
+            </div>
+            <div class="skill-chip" style="border-color:rgba(50,215,75,0.4);color:var(--accent3);"><span>Push
+                Notifications</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Proficiency bars -->
+      <div class="skills-visual reveal-right">
+        <div class="proficiency-list" id="profList">
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">Swift / SwiftUI</span><span class="prof-pct">95%</span>
+            </div>
+            <div class="prof-bar">
+              <div class="prof-fill" data-width="95"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">UIKit</span><span class="prof-pct">90%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill purple" data-width="90"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">HealthKit & Wearables</span><span
+                class="prof-pct">88%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill green" data-width="88"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">MVVM / Clean Architecture</span><span
+                class="prof-pct">92%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill" data-width="92"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">Firebase & Backend Integration</span><span
+                class="prof-pct">85%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill purple" data-width="85"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">Core Bluetooth / IoT</span><span
+                class="prof-pct">82%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill green" data-width="82"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">Combine / Async-Await</span><span
+                class="prof-pct">87%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill" data-width="87"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-header"><span class="prof-name">AI / CoreML Integration</span><span
+                class="prof-pct">80%</span></div>
+            <div class="prof-bar">
+              <div class="prof-fill purple" data-width="80"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== ACHIEVEMENTS ========== -->
+  <section id="achievements">
+    <div class="reveal">
+      <div class="section-eyebrow">Achievements</div>
+      <h2 class="section-title">What sets me apart</h2>
+    </div>
+    <div class="achievements-grid stagger">
+      <div class="ach-card reveal-scale">
+        <span class="ach-icon">🏥</span>
+        <div class="ach-title">HealthTech Expertise</div>
+        <div class="ach-desc">Deep integration of HealthKit, wearable sensors, and AI for real-world clinical and
+          wellness apps.</div>
+      </div>
+      <div class="ach-card reveal-scale">
+        <span class="ach-icon">⚡</span>
+        <div class="ach-title">High Performance Apps</div>
+        <div class="ach-desc">Consistently optimised for 60fps rendering, minimal memory footprint, and efficient
+          battery usage.</div>
+      </div>
+      <div class="ach-card reveal-scale">
+        <span class="ach-icon">📡</span>
+        <div class="ach-title">IoT Integration</div>
+        <div class="ach-desc">Shipped production apps with Core Bluetooth & Wi-Fi hardware connectivity for medical IoT
+          devices.</div>
+      </div>
+      <div class="ach-card reveal-scale">
+        <span class="ach-icon">🏗️</span>
+        <div class="ach-title">Scalable Architecture</div>
+        <div class="ach-desc">Championed MVVM + Clean Architecture across all projects, enabling rapid feature
+          development at scale.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact">
+    <div class="contact-inner">
+      <!-- Left -->
+      <div class="reveal-left">
+        <div class="section-eyebrow">Get In Touch</div>
+        <h2 class="contact-cta">Let's build something <span class="gradient-text">great together</span></h2>
+        <p class="contact-text">
+          Whether you're looking for an experienced iOS developer, want to collaborate on a HealthTech project, or just
+          want to talk about Apple platforms — my inbox is always open.
+        </p>
+        <div class="contact-links stagger">
+          <a href="mailto:kathiravan.iosdev@gmail.com" class="contact-link">
+            <div class="cl-icon" style="background:rgba(10,132,255,0.15);">📧</div>
+            <div class="cl-text">
+              <div class="cl-label">Email</div>
+              <div class="cl-value">kathiravan.iosdev@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/kathiravan-h" target="_blank" class="contact-link">
+            <div class="cl-icon" style="background:rgba(0,119,181,0.15);">💼</div>
+            <div class="cl-text">
+              <div class="cl-label">LinkedIn</div>
+              <div class="cl-value">linkedin.com/in/kathiravan-h</div>
+            </div>
+          </a>
+          <a href="https://github.com/kathiravaniOS" target="_blank" class="contact-link">
+            <div class="cl-icon" style="background:rgba(255,255,255,0.08);">🐙</div>
+            <div class="cl-text">
+              <div class="cl-label">GitHub</div>
+              <div class="cl-value">github.com/kathiravaniOS</div>
+            </div>
+          </a>
+          <a href="assets/Kathiravan_Resume.pdf" download class="contact-link"
+            style="background:linear-gradient(135deg,rgba(10,132,255,0.12),rgba(191,90,242,0.12));border-color:rgba(10,132,255,0.3);">
+            <div class="cl-icon" style="background:var(--grad1);">📄</div>
+            <div class="cl-text">
+              <div class="cl-label">Resume</div>
+              <div class="cl-value">Download CV — iOS Developer</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right — form -->
+      <div class="reveal-right">
+        <div class="glass-card" style="padding:36px;">
+          <div style="font-size:20px;font-weight:700;margin-bottom:8px;">Send a message</div>
+          <div style="font-size:14px;color:var(--text-secondary);margin-bottom:28px;">I typically respond within 24
+            hours.</div>
+          <form class="contact-form" onsubmit="handleForm(event)">
+            <input type="text" class="form-field" placeholder="Your Name" required />
+            <input type="email" class="form-field" placeholder="Your Email" required />
+            <input type="text" class="form-field" placeholder="Subject" />
+            <textarea class="form-field" placeholder="Your message..." rows="5"></textarea>
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:14px;">
+              Send Message ✉️
+            </button>
+          </form>
+          <div id="form-success"
+            style="display:none;margin-top:16px;text-align:center;padding:14px;background:rgba(50,215,75,0.12);border:1px solid rgba(50,215,75,0.3);border-radius:12px;font-size:14px;color:var(--accent3);">
+            ✅ Message sent! I'll get back to you soon.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <div class="divider"></div>
+  <footer>
+    <div class="footer-logo">Kathiravan H</div>
+    <div class="footer-copy">© 2025 Kathiravan H. Crafted with ❤️ in Swift & HTML.</div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // ---- Loader ----
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 1900);
+    });
+
+    // ---- Theme toggle ----
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.textContent = isDark ? '🌙' : '☀️';
+    });
+
+    // ---- Cursor glow ----
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    // ---- Scroll progress ----
+    const bar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const max = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = (window.scrollY / max * 100) + '%';
+    });
+
+    // ---- Reveal on scroll ----
+    const reveals = document.querySelectorAll('.reveal,.reveal-scale,.reveal-left,.reveal-right');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
       });
-      profIO.unobserve(e.target);
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // ---- Proficiency bars animation ----
+    const profIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.prof-fill').forEach(fill => {
+            fill.style.width = fill.dataset.width + '%';
+          });
+          profIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    const profList = document.getElementById('profList');
+    if (profList) profIO.observe(profList);
+
+    // ---- Parallax hero phones ----
+    window.addEventListener('scroll', () => {
+      const phones = document.querySelector('.hero-phones');
+      if (phones) {
+        const y = window.scrollY;
+        phones.style.transform = `translateY(${y * 0.18}px)`;
+      }
+    });
+
+    // ---- Card glass shine on mouse move ----
+    document.querySelectorAll('.glass-card.shine').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', x + '%');
+        card.style.setProperty('--my', y + '%');
+        card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.07) 0%, var(--surface) 60%)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.background = '';
+      });
+    });
+
+    // ---- Nav link active ----
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const navIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.style.color = '');
+          const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (link) link.style.color = 'var(--text)';
+        }
+      });
+    }, { rootMargin: '-40% 0px -40% 0px' });
+    sections.forEach(s => navIO.observe(s));
+
+    // ---- Form ----
+    function handleForm(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('form-success').style.display = 'none';
+      }, 5000);
     }
-  });
-}, { threshold: 0.3 });
-const profList = document.getElementById('profList');
-if(profList) profIO.observe(profList);
 
-// ---- Parallax hero phones ----
-window.addEventListener('scroll', () => {
-  const phones = document.querySelector('.hero-phones');
-  if(phones) {
-    const y = window.scrollY;
-    phones.style.transform = `translateY(${y * 0.18}px)`;
-  }
-});
+    // ---- About Photo Slider ----
+    (function () {
+      const track = document.getElementById('aboutSliderTrack');
+      const dots = document.querySelectorAll('#sliderDots .photo-dot');
+      const prevBtn = document.getElementById('sliderPrev');
+      const nextBtn = document.getElementById('sliderNext');
+      if (!track) return;
 
-// ---- Card glass shine on mouse move ----
-document.querySelectorAll('.glass-card.shine').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mx', x + '%');
-    card.style.setProperty('--my', y + '%');
-    card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.07) 0%, var(--surface) 60%)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.background = '';
-  });
-});
+      const total = track.children.length;
+      let current = 0;
+      let autoTimer;
 
-// ---- Nav link active ----
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const navIO = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      navLinks.forEach(l => l.style.color = '');
-      const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if(link) link.style.color = 'var(--text)';
-    }
-  });
-}, { rootMargin: '-40% 0px -40% 0px' });
-sections.forEach(s => navIO.observe(s));
+      function goTo(idx) {
+        current = (idx + total) % total;
+        /* track is width:300%, so each slide is 33.333% of the track */
+        track.style.transform = `translateX(-${current * (100 / total)}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
 
-// ---- Form ----
-function handleForm(e) {
-  e.preventDefault();
-  document.getElementById('form-success').style.display = 'block';
-  e.target.reset();
-  setTimeout(() => {
-    document.getElementById('form-success').style.display = 'none';
-  }, 5000);
-}
+      function startAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), 4000);
+      }
 
-// ---- About Photo Slider ----
-(function(){
-  const track   = document.getElementById('aboutSliderTrack');
-  const dots    = document.querySelectorAll('#sliderDots .photo-dot');
-  const prevBtn = document.getElementById('sliderPrev');
-  const nextBtn = document.getElementById('sliderNext');
-  if (!track) return;
+      prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+      nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+      dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); startAuto(); }));
 
-  const total = track.children.length;
-  let current = 0;
-  let autoTimer;
+      // Pause on hover
+      track.closest('.photo-slider').addEventListener('mouseenter', () => clearInterval(autoTimer));
+      track.closest('.photo-slider').addEventListener('mouseleave', startAuto);
 
-  function goTo(idx) {
-    current = (idx + total) % total;
-    /* track is width:300%, so each slide is 33.333% of the track */
-    track.style.transform = `translateX(-${current * (100 / total)}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(current + 1), 4000);
-  }
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
-  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); startAuto(); }));
-
-  // Pause on hover
-  track.closest('.photo-slider').addEventListener('mouseenter', () => clearInterval(autoTimer));
-  track.closest('.photo-slider').addEventListener('mouseleave', startAuto);
-
-  startAuto();
-})();
-</script>
+      startAuto();
+    })();
+  </script>
 </body>
+
 </html>
